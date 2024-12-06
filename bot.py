@@ -5,7 +5,7 @@ import requests
 
 
 # Load environment variables
-load_dotenv("C:/Users/Kunal Sharma/Downloads/BOT/bot.env")
+load_dotenv("C:/Users/Kunal Sharma/Downloads/BOT/bot1.env")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 
