@@ -20,6 +20,7 @@ bot = telebot.TeleBot(BOT_TOKEN)
 # Debug log for bot start
 print("Bot is running... Waiting for messages.")
 
+
 #the bot will respond with this message after start and hello
 @bot.message_handler(commands=['start', 'hello'])
 def send_welcome(message):
@@ -42,6 +43,7 @@ def get_daily_horoscope(sign: str, day: str) -> dict:
 
     return response.json()
 
+# this is the fuction for the /horoscope command 
 @bot.message_handler(commands= ['horoscope'])
 def ask_sign(message):
     """
@@ -52,6 +54,7 @@ def ask_sign(message):
     bot.register_next_step_handler(sent_message, day_handler)
 
 
+# This function handles the day of the requested hororsocpe
 def day_handler(message):
     """
     Handles the user's request for a horoscope by asking which day's horoscope
@@ -65,6 +68,7 @@ def day_handler(message):
     bot.register_next_step_handler(sent_message, fetch_horoscope, sign.capitalize())
 
 
+# This here fecthes the horoscope form the api and sends it to the user 
 def fetch_horoscope(message, sign):
     day = message.text
     horoscope = get_daily_horoscope(sign, day)
@@ -72,8 +76,6 @@ def fetch_horoscope(message, sign):
     horoscope_message = f'*Horoscope:* {data["horoscope_data"]}\n*Sign:* {sign}\n*Day:* {data["date"]}'
     bot.send_message(message.chat.id, "Your horoscope is the worst for the next year, nah just kidding,here is the real horoscope")
     bot.send_message(message.chat.id, horoscope_message, parse_mode="Markdown")
-
-
 
 
 
