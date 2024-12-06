@@ -5,7 +5,7 @@ import requests
 
 
 # Load environment variables
-load_dotenv("C:/Users/Kunal Sharma/Downloads/BOT/bot1.env")
+load_dotenv("C:/Users/Kunal Sharma/Downloads/BOT/HoroscopeBot/bot1.env")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 
@@ -27,11 +27,11 @@ def send_welcome(message):
     print(f"Received command: {message.text} from {message.chat.username}")
     bot.reply_to(message, "Holla MOFO, What's happening")
 
-# #this function is used to print back the message sent to the bot 
-# @bot.message_handler(func=lambda msg: True)
-# def echo_back(message):
-#     print(f"Received message: {message.text} from {message.chat.username}")
-#     bot.reply_to(message, message.text)
+#this function is used to print back the message sent to the bot 
+@bot.message_handler(func=lambda msg: True)
+def echo_back(message):
+    print(f"Received message: {message.text} from {message.chat.username}")
+    bot.reply_to(message, message.text)
 
 def get_daily_horoscope(sign: str, day: str) -> dict:
     """
