@@ -69,7 +69,7 @@ def day_handler(message):
 
 
 # This here fecthes the horoscope form the api and sends it to the user 
-def fetch_horoscope(message, sign):
+def fetch_horoscope(message, sign, ): 
     day = message.text
     horoscope = get_daily_horoscope(sign, day)
     data = horoscope["data"]
@@ -86,3 +86,4 @@ while True:
         bot.infinity_polling(timeout=10, long_polling_timeout=5)
     except Exception as e:
         print(f"Error occurred: {e}")
+
